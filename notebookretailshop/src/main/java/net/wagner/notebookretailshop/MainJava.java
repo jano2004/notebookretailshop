@@ -2,74 +2,75 @@ package net.wagner.notebookretailshop;
 import java.util.Scanner;
 
 public class MainJava {
-	static int bestand;
-	static boolean bestellung = false;
-	static String groesse;
-	
-	
 	public static void main(String[] args) {
-		Data d = new Data();
-		int bestand = d.groesse.size();
-		boolean moeglich = Bestellungmoeglich(bestand);
-		boolean janein = Bestellungjanein(moeglich);
-		int groessevorhanden = Groessevorhanden(janein);
-		Removegroesse(groessevorhanden);
 		
-	}
-	public static boolean Bestellungmoeglich(int bestand) {
-		if(bestand > 0) {
-			return true;
+		
+		Data d = new Data();
+		Bestandcheck bc = new Bestandcheck();
+		GroesseVorhanden gv = new GroesseVorhanden();
+		RemoveFromBestand rfb = new RemoveFromBestand();
+		
+		boolean bestandcheck = false;
+		boolean groesseVorhanden = false;
+		boolean removefrombestand = false;
+		
+		String input2 = "";
+		int input21 = 0;
+		
+		System.out.println("Möchtest du einen Schuh kaufen? J/N: ");
+		Scanner scanner = new Scanner(System.in);
+		String input1 = scanner.nextLine();
+		
+		
+		
+		//Bestandcheck ob ausreichend Ware vorhanden ist
+		if(input1.contains("J")) {
+			bestandcheck = bc.Check();
+		}
+		else if(input1.contains("N")) {
+			System.out.println("O.K., aufwiedersehen");
 		}
 		else {
-			return false;
+			System.out.println("Gebe einen gültigen Buchstaben an!");
 		}
-	}
-	
-	
-	public static boolean Bestellungjanein(boolean moeglich) {
-		if(moeglich) {
-			Scanner input = new Scanner(System.in);
-			System.out.println("Möchtest du einen Schuh bestellen? J/N:");
-			String janein = input.next();
-			input.close();
-			if(janein.contains("J")) {
-				moeglich = true;
-			}
-			else if(janein.contains("N")) {
-				moeglich = false;
-			}
-			else {
-				moeglich = false;
-			}
+		
+		
+		
+		//Bestandcheck ob gewünschte Schuhgröße vorhanden ist
+		if(bestandcheck) {
+			System.out.println("Welche Schugröße möchtest du bestellen? ");
+			
+			input2 = scanner.nextLine();
+			input21 = Integer.parseInt(input2);
+			
+			groesseVorhanden = gv.GroesseIstVorhanden(input21);
 		}
-		return moeglich;
-	}
-	
-	
-	public static int Groessevorhanden(boolean janein) {
-		Data d = new Data();
-		int groesse = 0;
-		if(janein) {
-			Scanner input = new Scanner(System.in);
-			System.out.println("Möchtest du einen Schuh bestellen? J/N:");
-			groesse = input.nextInt();
-			input.close();
-				if(!d.groesse.contains(groesse)) {
-					groesse = 0;
-				}
-		}
-		return groesse;
-	}
-	
-	
-	public static void Removegroesse(int groessevorhanden) {
-		Data d = new Data();
-		for(int i = 0; i < d.groesse.size(); i++) {
-			if(d.groesse.get(i) == groessevorhanden) {
-				d.groesse.remove(i);
-				i = d.groesse.size();
+		
+		
+		
+		//Aus Bestand entfernen
+		for(int i = 0; i <= d.bestandsliste.size(); i++) {
+			if(d.bestandsliste.get(i) == input21) {
+				d.bestandsliste.remove(i);
+				i = d.bestandsliste.size();
+				removefrombestand = true;
 			}
 		}
+		
+		
+		
+		//Ausgabe ob Schuh bestellt werden konnte
+		if(removefrombestand) {
+			System.out.println("Dein Schuh mit der Schuhgroesse " + input21 + " wurde auf dich reserviert!");
+		}
+		else if(!removefrombestand) {
+			System.out.println("Dein Schuh konnte nicht auf dich reserviert werden!");
+		}
+		scanner.close();
+		
+		
+		
+		System.out.println("\n" + d.bestandsliste.size());
 	}
-	
 }
+

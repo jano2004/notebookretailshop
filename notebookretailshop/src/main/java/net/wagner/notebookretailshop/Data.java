@@ -3,27 +3,31 @@ package net.wagner.notebookretailshop;
 import java.util.ArrayList;
 
 public class Data {
-	ArrayList<Integer> groesse = new ArrayList<>();{
+	public int bestand;
+	public boolean bestellung = false;
+	public int groesseint;
+	
+	public ArrayList<Integer> bestandsliste = new ArrayList<>();{
 
 	for(int o = 0; o < 20; o++)
 	{
-		groesse.add(41);
+		bestandsliste.add(41);
 	}
 	for(int p = 0; p < 20; p++)
 	{
-		groesse.add(42);
+		bestandsliste.add(42);
 	}
 	for(int n = 0; n < 20; n++)
 	{
-		groesse.add(43);
+		bestandsliste.add(43);
 	}
 	for(int l = 0; l < 20; l++)
 	{
-		groesse.add(44);
+		bestandsliste.add(44);
 	}
 	for(int a = 0; a < 20; a++)
 	{
-		groesse.add(45);
+		bestandsliste.add(45);
 		
 	 	}
 	}
