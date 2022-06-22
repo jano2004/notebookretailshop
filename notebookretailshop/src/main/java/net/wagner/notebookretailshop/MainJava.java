@@ -7,14 +7,13 @@ public class MainJava {
 	static Data d = new Data();
 	static Bestandcheck bc = new Bestandcheck();
 	static GroesseVorhanden gv = new GroesseVorhanden();
-	static BestandAuffuellen ba = new BestandAuffuellen();
-	
+	static int timepast = 0;
 	
 	static Scanner scanner = new Scanner(System.in);
 	
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
 		
 		boolean bestandcheck = false;
@@ -27,7 +26,7 @@ public class MainJava {
 		
 		String input2 = "";
 		int input2int = 0;
-		
+		int timeinseconds = 10;
 		
 		System.out.println("Möchtest du einen Schuh kaufen? J/N: ");
 		String input1 = scanner.nextLine();
@@ -44,32 +43,39 @@ public class MainJava {
 			System.out.println("Gebe einen gültigen Buchstaben an!");
 		}
 		
-		
+
 		if(bestandauffuellen) {
 			do {
-				
+					
 			SchuhHinzufuegen();
 			System.out.println("Möchtest du noch mehr Schuhe in den Bestand aufnehmen? J/N: ");
 			JoN = scanner.nextLine();
+				
 			} while (JoN.contains("J") || JoN.contains("j"));
 		}
-		
-		
-		
-		if(!bestandauffuellen) {
-			if(bestandcheck = true) {
-				Abrechnung(bestandcheck, input2, input2int, groesseVorhanden, removefrombestand);
+			
+			
+			
+			if(!bestandauffuellen) {
+				if(bestandcheck = true) {
+					Abrechnung(bestandcheck, input2, input2int, groesseVorhanden, removefrombestand);
+					System.out.println("\nDer Bestand liegt bei " + d.bestandsliste.size() + " Schuhen");
+				}
 			}
-		}
-		
-		
-		
-		System.out.println("\nDer Bestand liegt bei " + d.bestandsliste.size() + " Schuhen");
-		scanner.close();
+			
+			for(int i = 0; i < timeinseconds; i++) {
+				System.out.flush();
+				int t = ThreadSleep()/1000;
+				String timecomplet = Timecalculator(t);
+				System.out.flush();
+				System.out.println("Der Schuh kann max. 10 Minuten reservieren sein: "+ timecomplet);
+			}
+
+			scanner.close();
 	}
 	
 	
-	
+
 	
 	static void Abrechnung(boolean bestandcheck, String input2, int input2int, boolean groesseVorhanden, boolean removefrombestand) {
 		//Bestandcheck ob gewünschte Schuhgröße vorhanden ist
@@ -140,4 +146,25 @@ public class MainJava {
 			d.bestandsliste.add(groesse);
 		}
 	}
-}   
+
+
+	static int ThreadSleep() throws InterruptedException {
+			long start = System.currentTimeMillis();
+		    Thread.sleep(1000);
+		    timepast += System.currentTimeMillis()-start;   
+		    return timepast;
+	}
+
+
+	static String Timecalculator(int t) {
+		double time = t;
+		int timemin = (int) (time/60);
+		int timedec=(int) ((time/60-timemin)*60);
+		if(timedec<10) {
+		return("0"+timemin+":0"+timedec);
+		}
+		else {
+			return("0"+timemin+":"+timedec);
+		}
+	}
+} 
