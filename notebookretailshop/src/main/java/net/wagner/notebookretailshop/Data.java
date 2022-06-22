@@ -3,10 +3,6 @@ package net.wagner.notebookretailshop;
 import java.util.ArrayList;
 
 public class Data {
-	public int bestand;
-	public boolean bestellung = false;
-	public int groesseint;
-	
 	public ArrayList<Integer> bestandsliste = new ArrayList<>();{
 
 	for(int o = 0; o < 20; o++)
