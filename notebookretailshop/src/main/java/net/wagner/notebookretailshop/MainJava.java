@@ -3,168 +3,101 @@ import java.util.Scanner;
 
 public class MainJava {
 	
-	
-	static Data d = new Data();
-	static Bestandcheck bc = new Bestandcheck();
-	static GroesseVorhanden gv = new GroesseVorhanden();
-	static int timepast = 0;
-	
+	static Notebook nb = new Notebook();
 	static Scanner scanner = new Scanner(System.in);
+	static NotebookConfig nbc = new NotebookConfig();
+	static Stock st = new Stock();
+	static StockConfig stc = new StockConfig();
+	static String notebookColor = null;
+	static String notebookLayout = null;
+	static int notebookSize = 0;
+	static String fillUpStock = null;
+	static int fillUpStockAmount = 0;
+	static boolean fillUpStockOrBuyShoe = false;
 	
-	
-	
-	public static void main(String[] args) throws InterruptedException {
-
+	public static void main(String[] args) {
 		
-		boolean bestandcheck = false;
-		boolean groesseVorhanden = false;
-		boolean removefrombestand = false;
-		boolean bestandauffuellen = false;
+		System.out.println("would you like to order a shoe or do you want to fill up the stock");
+		fillUpStock = scanner.nextLine();	
 		
+		FillUpStockOrBuyShoe(fillUpStock);
 		
-		String JoN = "N";
+		scanner.close();
 		
-		String input2 = "";
-		int input2int = 0;
-		int timeinseconds = 10;
-		
-		System.out.println("Möchtest du einen Schuh kaufen? J/N: ");
-		String input1 = scanner.nextLine();
-		
-		
-		//Bestandcheck ob ausreichend Ware vorhanden ist
-		if(input1.contains("J") || input1.contains("j")) {
-			bestandcheck = bc.Check();
-		}
-		else if(input1.contains("N") || input1.contains("n")) {
-			bestandauffuellen = BestandAuffuellen(bestandauffuellen);
-		}
-		else {
-			System.out.println("Gebe einen gültigen Buchstaben an!");
-		}
-		
-
-		if(bestandauffuellen) {
-			do {
-					
-			SchuhHinzufuegen();
-			System.out.println("Möchtest du noch mehr Schuhe in den Bestand aufnehmen? J/N: ");
-			JoN = scanner.nextLine();
-				
-			} while (JoN.contains("J") || JoN.contains("j"));
-		}
-			
-			
-			
-			if(!bestandauffuellen) {
-				if(bestandcheck = true) {
-					Abrechnung(bestandcheck, input2, input2int, groesseVorhanden, removefrombestand);
-					System.out.println("\nDer Bestand liegt bei " + d.bestandsliste.size() + " Schuhen");
-				}
-			}
-			
-			for(int i = 0; i < timeinseconds; i++) {
-				System.out.flush();
-				int t = ThreadSleep()/1000;
-				String timecomplet = Timecalculator(t);
-				System.out.flush();
-				System.out.println("Der Schuh kann max. 10 Minuten reservieren sein: "+ timecomplet);
-			}
-
-			scanner.close();
+		CheckOutMessage(notebookColor, notebookSize, notebookLayout);
 	}
 	
-	
-
-	
-	static void Abrechnung(boolean bestandcheck, String input2, int input2int, boolean groesseVorhanden, boolean removefrombestand) {
-		//Bestandcheck ob gewünschte Schuhgröße vorhanden ist
-		
-		if(bestandcheck) {
-			System.out.println("Welche Schugröße möchtest du bestellen? ");
-			
-			input2 = scanner.nextLine();
-			input2int = Integer.parseInt(input2);
-			
-			groesseVorhanden = gv.GroesseIstVorhanden(input2int);
-		}
-		
-		
-		
-		//Aus Bestand entfernen
-		if(groesseVorhanden) {
-			for(int i = 0; i <= d.bestandsliste.size(); i++) {
-				if(d.bestandsliste.get(i) == input2int) {
-					d.bestandsliste.remove(i);
-					i = d.bestandsliste.size();
-					removefrombestand = true;
-				}
+	public static String NotebookColor() {
+		String scanner_input = scanner.nextLine(); 
+		String output = null;
+		System.out.println();
+		for(int i = 0; i < 5; i++) {
+			if(nbc.color[i] == scanner_input) {
+				output = scanner_input;
+			}
+			else {
+				output = null;
 			}
 		}
-		
-		
-		
-		//Ausgabe ob Schuh bestellt werden konnte
-		if(removefrombestand) {
-			System.out.println("Dein Schuh mit der Schuhgroesse " + input2int + " wurde auf dich reserviert!");
+		return output;
+	}
+	
+	public static int NotebookSize() {
+		int scanner_input = Integer.parseInt(scanner.nextLine()); 
+		System.out.println();
+		int output = 0;
+		System.out.println();
+		for(int i = 0; i < 4; i++) {
+			if(nbc.inch[i] == scanner_input) {
+				output = scanner_input;
+			}
+			else {
+				output = 0;
+			}
 		}
-		else if(!removefrombestand) {
-			System.out.println("Dein Schuh konnte nicht auf dich reserviert werden!");
+		return output;
+	}
+	
+	public static String NotebookLayout() {
+		String scanner_input = scanner.nextLine(); 
+		System.out.println();
+		String output = null;
+		System.out.println();
+		for(int i = 0; i < 4; i++) {
+			if(nbc.layout[i] == scanner_input) {
+				output = scanner_input;
+			}
+			else {
+				output = null;
+			}
+		}
+		return output;
+	}
+	
+	public static void CheckOutMessage(String notebookColor, int notebookSize, String notebookLayout) {
+		if(notebookColor != null && notebookSize != 0 && notebookLayout != null) {
+			System.out.println("your notebook in color " + notebookColor
+			+ " and the monitorsize of " + notebookSize
+			+ " is reserved to you with the layout" + notebookLayout);
+			st.stock.remove(0);
 		}
 	}
 	
-	
-	static boolean BestandAuffuellen(boolean bestandauffuellen) {
-		System.out.println("Möchten sie stattdessen den Bestand auffüllen? J/N: ");
-		String input3 = scanner.nextLine();
-		
-		if(input3.contains("J") || input3.contains("j")) {
-			bestandauffuellen = true;
+	public static void FillUpStockOrBuyShoe(String fillUpStock) {
+		if(fillUpStock.contains("J") || fillUpStock.contains("j")) {
+			System.out.println("what color should the laptop be? blue/red/black/silver:");
+			notebookColor = NotebookColor();
+			
+			System.out.println("what size should the laptop be? 12 Zoll/13 Zoll/14 Zoll/15 Zoll/16 Zoll");
+			notebookSize = NotebookSize();
+			
+			System.out.println("what layout would you like to use? DE/EN:");
+			notebookLayout = NotebookLayout();
 		}
-		else if(input3.contains("N") || input3.contains("n")) {
-			bestandauffuellen = false;
-		}
-		else {
-			System.out.println("Gebe einen gültigen Buchstaben an!");
-		}
-		return bestandauffuellen;
-	}
-
-
-	static void SchuhHinzufuegen() {
 		
-		int groesse;
-		int anzahl;
-		
-		System.out.println("Welche Groesse sollen die/soll der Schuh haben? ");
-		groesse = (Integer.parseInt(scanner.nextLine()));
-		
-		System.out.println("Wie viele Schuhe mit dieser Groesse möchtest du hinzufügen? ");
-		anzahl = (Integer.parseInt(scanner.nextLine()));
-		
-		for(int i = 0; i < anzahl; i++) {
-			d.bestandsliste.add(groesse);
-		}
-	}
-
-
-	static int ThreadSleep() throws InterruptedException {
-			long start = System.currentTimeMillis();
-		    Thread.sleep(1000);
-		    timepast += System.currentTimeMillis()-start;   
-		    return timepast;
-	}
-
-
-	static String Timecalculator(int t) {
-		double time = t;
-		int timemin = (int) (time/60);
-		int timedec=(int) ((time/60-timemin)*60);
-		if(timedec<10) {
-		return("0"+timemin+":0"+timedec);
-		}
-		else {
-			return("0"+timemin+":"+timedec);
+		else if(fillUpStock.contains("N") || fillUpStock.contains("n")) {
+			System.out.println("how many notebooks do you wnat to add to the stock?");
+			fillUpStockAmount = Integer.parseInt(scanner.nextLine());
 		}
 	}
 } 
