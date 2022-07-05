@@ -1,7 +1,10 @@
 package net.wagner.notebookretailshop;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Stock {
-	static StockConfig stc = new StockConfig(); 
-	public ArrayList<Integer> stock = new ArrayList<Integer>();
+	private List<Notebook> notebooks;
+	void add(Notebook notebook) {
+	}
+	    void addAll(List<Notebook> notebook) {
+	}
 }
