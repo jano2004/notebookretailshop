@@ -60,7 +60,7 @@ public class MainJava {
 			
 			pc = new PC(id, ram, cpu, gpu, mainboard, psu, drives);
 		}
-		System.out.println("Der Bestand liegt bei " + st.getNotebooks() + "!");
+		System.out.println("Der Bestand liegt bei " + st.getNotebooks() + " Notebooks and " + st.getPCs() + "PCs!");
 		
 	}
 } 
