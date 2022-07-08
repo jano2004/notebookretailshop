@@ -7,7 +7,6 @@ import lombok.Getter;
 
 @Getter 
 class Notebook {
-	static MainJava mj = new MainJava();
 
 	private int id;
 	private String color;
@@ -29,22 +28,22 @@ Notebook(int id,
 	}
 
 	public void setId(int id) {
-		this.id = mj.id;
+		this.id = MainJava.id;
 	}
 	
 	public void setColor(String color) {
-		this.color = mj.color;
+		this.color = MainJava.color;
 	}
 	
 	public void setMacAddress(String macAddress) {
-		this.macAddress = mj.macAddress;
+		this.macAddress = MainJava.macAddress;
 	}
 	
 	public void setMonitorSizeInInches(int monitorSizeInInches) {
-		this.monitorSizeInInches = mj.monitorSizeInInches;
+		this.monitorSizeInInches = MainJava.monitorSizeInInches;
 	}
 	
 	public void setLayout(String layout) {
-		this.layout = mj.layout;
+		this.layout = MainJava.layout;
 	}
 }

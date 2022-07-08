@@ -7,4 +7,7 @@ public class Stock {
 	}
 	    void addAll(List<Notebook> notebook) {
 	}
+	public int getNotebooks() {
+		return notebooks.size();
+	}    
 }
