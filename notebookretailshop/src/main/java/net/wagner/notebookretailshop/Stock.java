@@ -1,22 +1,36 @@
 package net.wagner.notebookretailshop;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Stock {
-	private List<Notebook> notebooks;
-	void add(Notebook notebook) {
-	}
-	    void addAllNotebooks(List<Notebook> notebook) {
-	}
-	public int getNotebooks() {
-		return notebooks.size();
-	} 
+	private Stock instance;
 	
-	private List<PC> pc;
-	void add(PC pc) {
+	private static List<Computer> computers;
+	
+	public Stock() {
+		this.computers = new ArrayList<>();
 	}
-	    void addAllPCs(List<PC> pc) {
+	
+	public Stock getInstance() {
+		if(this.instance == null) {
+			this.instance = new Stock();
+		}
+		return this.instance;
 	}
-	public int getPCs() {
-		return pc.size();
-	} 
+	
+	void addNotebook(Notebook nb) {
+		computers.add(nb);
+	}
+	
+	void addPC(PC pc) {
+		computers.add(pc);
+	}
+	
+	void addAll(List<Computer>computers) {
+		this.computers.addAll(computers);
+	}
+	
+	public int getStockSize() {
+		return this.computers.size();
+	}
 }

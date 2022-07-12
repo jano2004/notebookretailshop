@@ -10,7 +10,7 @@ public class MainJava {
 	static Scanner scanner = new Scanner(System.in);
 	static Stock st = new Stock();
 	static Random rndm = new Random();
-	static StockConfig stc = new StockConfig();;
+	static StockConfig stc = new StockConfig();
 
 	public static void main(String[] args) {
 		
@@ -23,6 +23,6 @@ public class MainJava {
 			stc.AddPCToStock();
 		}
 			
-		System.out.println("Der Bestand liegt bei " + st.getNotebooks() + " Notebooks and " + st.getPCs() + "PCs!");
+		System.out.println("Der Bestand liegt bei " + " Notebooks and " + "PCs!");
 	}
 } 

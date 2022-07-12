@@ -1,6 +1,10 @@
 package net.wagner.notebookretailshop;
 
-public class PC {
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+class PC {
 	private String ram;
 	private String cpu;
 	private String gpu;
@@ -8,6 +12,7 @@ public class PC {
 	private String psu;
 	private String drives;
 	
+	@Builder
 	PC(int id, 
 		String ram,
 		String cpu, 
