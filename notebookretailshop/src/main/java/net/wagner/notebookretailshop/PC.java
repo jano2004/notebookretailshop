@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-class PC {
+class PC extends Computer {
 	private String ram;
 	private String cpu;
 	private String gpu;

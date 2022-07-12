@@ -14,13 +14,16 @@ public class MainJava {
 
 	public static void main(String[] args) {
 		
+		stc.addNotebookToStock();
+		stc.addPCToStock();
+		
 		System.out.print("Would you like to order a PC(pc) or a notebook(nb)? ");
 		
 		if(scanner.nextLine().contains("nb")) {
-			stc.AddNotebookToStock();
+			st.removeNotebook();
 		}
 		if (scanner.nextLine().contains("pc")) {
-			stc.AddPCToStock();
+			st.removePC();
 		}
 			
 		System.out.println("Der Bestand liegt bei " + " Notebooks and " + "PCs!");

@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.Getter;
 
 @Getter 
-class Notebook {
+class Notebook extends Computer {
 
 	private int id;
 	private String color;
