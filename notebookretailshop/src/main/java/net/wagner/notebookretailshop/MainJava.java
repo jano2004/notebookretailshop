@@ -17,15 +17,20 @@ public class MainJava {
 		stc.addNotebookToStock();
 		stc.addPCToStock();
 		
+		
 		System.out.print("Would you like to order a PC(pc) or a notebook(nb)? ");
 		
+		
 		if(scanner.nextLine().contains("nb")) {
-			st.removeNotebook();
+			st.removeComputer();
 		}
+		
+		
 		if (scanner.nextLine().contains("pc")) {
-			st.removePC();
-		}
-			
+			st.removeComputer();
+		}	
+		
+		
 		System.out.println("Der Bestand liegt bei " + " Notebooks and " + "PCs!");
 	}
 } 

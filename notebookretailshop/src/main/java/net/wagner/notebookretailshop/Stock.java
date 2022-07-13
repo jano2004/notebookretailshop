@@ -5,13 +5,11 @@ import java.util.List;
 public class Stock {
 	private Stock instance;
 	
-	static Notebook notebook;
-	
 	static PC pc;
 	
-	private static List<Computer> computers;
+	private List<Computer> computers;
 	
-	public Stock() {
+	Stock() {
 		computers = new ArrayList<>();
 	}
 	
@@ -26,27 +24,18 @@ public class Stock {
 		computers.add(computer);
 	}
 	
-	void addAll(List<Computer>computers) {
-		computers.addAll(computers);
+	void addAll(List<Computer>computerInput) {
+		computers.addAll(computerInput);
 	}
 	
 	public int getStockSize() {
 		return computers.size();
 	}
 	
-	void removeNotebook() {
+	void removeComputer(Computer computer) {
 		for (int i = 0; i < getStockSize(); i++){
-			if (computers.get(i) == notebook) {
-				computers.remove(i);
-				i = getStockSize();
-			}
-		}
-	}
-	
-	void removePC() {
-		for (int i = 0; i < getStockSize(); i++){
-			if (computers.get(i) == pc) {
-				computers.remove(i);
+			if (computers.get(i) == computer) {
+				computers.remove(computer);
 				i = getStockSize();
 			}
 		}
