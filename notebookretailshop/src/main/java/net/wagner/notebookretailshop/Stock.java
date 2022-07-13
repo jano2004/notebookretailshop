@@ -7,7 +7,7 @@ public class Stock {
 	
 	static PC pc;
 	
-	private List<Computer> computers;
+	List<Computer> computers;
 	
 	Stock() {
 		computers = new ArrayList<>();
@@ -33,12 +33,7 @@ public class Stock {
 	}
 	
 	void removeComputer(Computer computer) {
-		for (int i = 0; i < getStockSize(); i++){
-			if (computers.get(i) == computer) {
-				computers.remove(computer);
-				i = getStockSize();
-			}
-		}
+		computers.remove(computer);
 	}
 }
          

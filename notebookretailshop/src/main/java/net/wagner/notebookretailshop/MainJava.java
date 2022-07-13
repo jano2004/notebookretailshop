@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import lombok.Data;
 
+
 public class MainJava {
 	
 	static Scanner scanner = new Scanner(System.in);
@@ -17,17 +18,16 @@ public class MainJava {
 		stc.addNotebookToStock();
 		stc.addPCToStock();
 		
-		
 		System.out.print("Would you like to order a PC(pc) or a notebook(nb)? ");
 		
 		
 		if(scanner.nextLine().contains("nb")) {
-			st.removeComputer();
+			st.removeComputer((Computer) st.computers);
 		}
 		
 		
 		if (scanner.nextLine().contains("pc")) {
-			st.removeComputer();
+			st.removeComputer((Computer) st.computers);
 		}	
 		
 		

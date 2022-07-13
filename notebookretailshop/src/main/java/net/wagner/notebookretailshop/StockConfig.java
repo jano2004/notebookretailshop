@@ -14,8 +14,8 @@ public class StockConfig {
 	
 	public void addPCToStock() {
 		var stock = st.getInstance();
-		for(int i = 0; i < 10; i++) {
-			PC pc = new PC(1, "16GB", "AMD", "Nvidia", "Asus", "beQuiet", "SSD");
+		for(int i = 11; i < 21; i++) {
+			PC pc = new PC(2, "16GB", "AMD", "Nvidia", "Asus", "beQuiet", "SSD");
 			st.addComputer(pc);
 		}
 	}
