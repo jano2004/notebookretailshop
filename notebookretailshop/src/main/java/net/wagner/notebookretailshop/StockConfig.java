@@ -2,7 +2,7 @@ package net.wagner.notebookretailshop;
 
 public class StockConfig {	
 	
-	Stock st = new Stock();
+	Stock st;
 	
 	public void addNotebookToStock() {
 		var stock = st.getInstance();
