@@ -40,7 +40,7 @@ public class Stock {
 	
 	void removeNotebookFromStock() {
 		for (int i = 0; i < computers.size(); i++) {
-			if (computers.get(i) == (notebook = new Notebook(1, 15, "red", "DE", "macAdress"))) {
+			if (computers.get(i) == new Notebook(1, 15, "red", "DE", "macAdress")) {
 				computers.remove(i);
 				i = computers.size();
 			}
@@ -49,7 +49,7 @@ public class Stock {
 	
 	void removePCFromStock() {
 		for (int i = 0; i < computers.size(); i++) {
-			if (computers.get(i) == (pc = new PC(2, "16GB", "AMD", "Nvidia", "Asus", "beQuiet", "SSD"))) {
+			if (computers.get(i) == new PC(2, "16GB", "AMD", "Nvidia", "Asus", "beQuiet", "SSD")) {
 				computers.remove(i);
 				i = computers.size();
 			}
