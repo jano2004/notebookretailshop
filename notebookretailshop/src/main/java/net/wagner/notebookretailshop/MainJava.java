@@ -9,27 +9,34 @@ import lombok.Data;
 public class MainJava {
 	
 	static Scanner scanner = new Scanner(System.in);
-	static Stock st;
+	static Stock stock = Stock.getInstance();
 	static Random rndm = new Random();
-	static StockConfig stc = new StockConfig();
+	static StockConfig stockConfig = new StockConfig();
 	static Notebook notebook;
-
+	static Order order;
+	
 	public static void main(String[] args) {
 		
-		stc.addNotebookToStock();
-		stc.addPCToStock();
+		stockConfig.addNotebookToStock();
+		stockConfig.addPCToStock();
 		
 		System.out.print("Would you like to order a PC(pc) or a notebook(nb)? ");
 		
-		
 		if(scanner.nextLine().contains("nb")) {
-			st.removeNotebookFromStock();
+			order = new Order();
+			order.askForNotebookInStock(15, "red", "DE", "macAdress");
 		}
 		
-		if (scanner.nextLine().contains("pc")) {
-			st.removePCFromStock();
+		else if (scanner.nextLine().contains("pc")) {
+			order = new Order();
+			order.askForPCInStock("16GB", "AMD", "Nvidia", "Asus", "beQuiet", "SSD");
 		}	
+		else {
+			System.out.println("Error");
+		}
 		
-		System.out.println("Der Bestand liegt bei " + " Notebooks and " + "PCs!");
+		System.out.println("The stock: " + stock.computers.size());
+		
+		scanner.close();
 	}
 } 

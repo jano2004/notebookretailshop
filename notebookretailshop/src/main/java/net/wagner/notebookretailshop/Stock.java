@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Stock {
-	private Stock instance;
+	private static Stock instance;
 	
 	static Notebook notebook;
 	
@@ -15,11 +15,11 @@ public class Stock {
 		computers = new ArrayList<>();
 	}
 	
-	public Stock getInstance() {
-		if(this.instance == null) {
-			this.instance = new Stock();
+	public static Stock getInstance() {
+		if(instance == null) {
+			instance = new Stock();
 		}
-		return this.instance;
+		return instance;
 	}
 	
 	void addComputer(Computer computer) {
@@ -38,22 +38,12 @@ public class Stock {
 		computers.remove(computer);
 	}
 	
-	void removeNotebookFromStock() {
-		for (int i = 0; i < computers.size(); i++) {
-			if (computers.get(i) == new Notebook(1, 15, "red", "DE", "macAdress")) {
-				computers.remove(i);
-				i = computers.size();
-			}
-		}
+	void removeNotebookFromStock(Computer notebookToFind) {
+			computers.remove(notebookToFind);
 	}
 	
-	void removePCFromStock() {
-		for (int i = 0; i < computers.size(); i++) {
-			if (computers.get(i) == new PC(2, "16GB", "AMD", "Nvidia", "Asus", "beQuiet", "SSD")) {
-				computers.remove(i);
-				i = computers.size();
-			}
-		}
+	void removePCFromStock(Computer pcToFind) {
+			computers.remove(pcToFind);
 	}
 }
          
