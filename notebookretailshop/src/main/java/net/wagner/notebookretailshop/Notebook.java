@@ -1,24 +1,17 @@
 package net.wagner.notebookretailshop;
-import java.sql.Statement;
-import java.util.UUID;
-import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
-
 @Getter 
 class Notebook extends Computer {
 	
-	private int id;
-	private int monitorSizeInInches;
-	private String layout;
+
 	private String color;
-	private String macAddress;
+	private String layout;
+	private int monitorSizeInInches;
 	
-@Builder
 Notebook(int id, 
-	int monitorSizeInInches,
 	String color, 
 	String layout,
+	int monitorSizeInInches,
 	String macAddress) {
 	this.id = id;
 	this.color = color;

@@ -6,16 +6,18 @@ import java.sql.Statement;
 
 public class FillUpStock {
 	
-	static MySQLConnection mysqlconnection = new MySQLConnection();
-	static StockConfig stockConfig = new StockConfig();
-	
-	
+	StockConfig stockConfig;
+	MySQLConnection mysqlconnection;
 	Notebook notebook;
 	
 	
-		
+	public FillUpStock(StockConfig stockConfig) {
+		this.stockConfig = stockConfig;
+		this.mysqlconnection =  new MySQLConnection();
+	}
+
 	public void addComputerToStock() throws SQLException {
-		Statement stmt = mysqlconnection.addNotebookToStock().createStatement();
+		Statement stmt = mysqlconnection.createConnection().createStatement();
 		ResultSet rsNotebook = stmt.executeQuery("select id, color, layout, monitorSizeInInches, macAdress from notebook");
 		
 		while (rsNotebook.next()) {

@@ -1,13 +1,12 @@
 package net.wagner.notebookretailshop;
 
-import java.sql.Statement;
 
 public class StockConfig {
 
 	static Stock stock = Stock.getInstance();
 
 	public void addNotebookToStock(int id, String color, String layout, int monitorSizeInInches, String macAdress) {
-		Notebook notebook = new Notebook(id, monitorSizeInInches, layout, color, macAdress);
+		Notebook notebook = new Notebook(id, color, layout, monitorSizeInInches, macAdress);
 		stock.addComputer(notebook);
 	}
 

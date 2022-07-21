@@ -1,20 +1,18 @@
 package net.wagner.notebookretailshop;
 
-import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 class PC extends Computer {
-	private int id;
+
 	private String ram;
 	private String cpu;
 	private String gpu;
 	private String mainboard;
 	private String psu;
 	private String drives;
-	private String macAdress;
 	
-	@Builder
+
 	PC(int id, 
 		String ram,
 		String cpu, 
@@ -31,6 +29,6 @@ class PC extends Computer {
 		this.mainboard = mainboard;
 		this.psu = psu;
 		this.drives = drives;
-		this.macAdress = macAdress;
+		this.macAddress = macAdress;
 	}
 }
