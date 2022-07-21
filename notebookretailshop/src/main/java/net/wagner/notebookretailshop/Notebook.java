@@ -1,4 +1,5 @@
 package net.wagner.notebookretailshop;
+import java.sql.Statement;
 import java.util.UUID;
 import lombok.Builder;
 import lombok.Data;
@@ -6,12 +7,12 @@ import lombok.Getter;
 
 @Getter 
 class Notebook extends Computer {
-
+	
 	private int id;
-	private String color;
-	private String macAddress;
 	private int monitorSizeInInches;
 	private String layout;
+	private String color;
+	private String macAddress;
 	
 @Builder
 Notebook(int id, 

@@ -1,20 +1,19 @@
 package net.wagner.notebookretailshop;
 
-public class StockConfig {	
-	
+import java.sql.Statement;
+
+public class StockConfig {
+
 	static Stock stock = Stock.getInstance();
-	
-	public void addNotebookToStock() {
-			for (int i = 0; i < 10; i++) {
-				Notebook nb = new Notebook(1, 15, "red", "DE", "macAdress");
-				stock.addComputer(nb); 
-			}
+
+	public void addNotebookToStock(int id, String color, String layout, int monitorSizeInInches, String macAdress) {
+		Notebook notebook = new Notebook(id, monitorSizeInInches, layout, color, macAdress);
+		stock.addComputer(notebook);
 	}
-	
-	public void addPCToStock() {
-		for(int i = 11; i < 21; i++) {
-			PC pc = new PC(2, "16GB", "AMD", "Nvidia", "Asus", "beQuiet", "SSD");
-			stock.addComputer(pc);
-		}
+
+	public void addPCToStock(int id, String ram, String cpu, String gpu, String mainboard,
+			String psu, String drives, String macAdress) {
+		PC pc = new PC(id, ram, cpu, gpu, mainboard, psu, drives, macAdress);
+		stock.addComputer(pc);
 	}
 }

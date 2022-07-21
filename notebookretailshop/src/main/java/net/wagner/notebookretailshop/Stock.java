@@ -5,10 +5,6 @@ import java.util.List;
 public class Stock {
 	private static Stock instance;
 	
-	static Notebook notebook;
-	
-	static PC pc;
-	
 	List<Computer> computers;
 	
 	private Stock() {

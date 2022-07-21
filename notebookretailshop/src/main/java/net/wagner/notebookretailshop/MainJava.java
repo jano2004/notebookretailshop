@@ -1,9 +1,7 @@
 package net.wagner.notebookretailshop;
+import java.sql.SQLException;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.UUID;
-
-import lombok.Data;
 
 
 public class MainJava {
@@ -14,22 +12,21 @@ public class MainJava {
 	static StockConfig stockConfig = new StockConfig();
 	static Notebook notebook;
 	static Order order;
+	static MySQLConnection connection = new MySQLConnection();
+	static FillUpStock fillUpStock = new FillUpStock();
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {	
 		
-		stockConfig.addNotebookToStock();
-		stockConfig.addPCToStock();
+		fillUpStock.addComputerToStock();
 		
 		System.out.print("Would you like to order a PC(pc) or a notebook(nb)? ");
 		
 		if(scanner.nextLine().contains("nb")) {
 			order = new Order();
-			order.askForNotebookInStock(15, "red", "DE", "macAdress");
 		}
 		
 		else if (scanner.nextLine().contains("pc")) {
 			order = new Order();
-			order.askForPCInStock("16GB", "AMD", "Nvidia", "Asus", "beQuiet", "SSD");
 		}	
 		else {
 			System.out.println("Error");
