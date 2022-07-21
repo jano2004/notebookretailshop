@@ -31,7 +31,7 @@ public class MainJava {
 		else {
 			System.out.println("Error");
 		}
-		
+		//Hallo
 		System.out.println("The stock: " + stock.computers.size());
 		
 		scanner.close();
